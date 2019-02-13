@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <betterreviews translate="title" module="betterreviews">
+                                        <title><![CDATA[BetterReviews]]></title>
+                                        <sort_order>1100</sort_order>
+                                    </betterreviews>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

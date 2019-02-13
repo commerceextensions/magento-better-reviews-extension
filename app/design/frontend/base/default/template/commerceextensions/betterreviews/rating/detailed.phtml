@@ -1,0 +1,38 @@
+<?php /** @var Mage_Rating_Block_Entity_Detailed $this */ ?>
+<?php if(!empty($collection) && $collection->getSize()): ?>
+    <?php $showStructuredData = (bool)$this->getShowStructuredData(); ?>
+    <?php if($showStructuredData): ?>
+        <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <?php endif; ?>
+    <table class="ratings-table">
+        <col width="1" />
+        <col />
+        <tbody>
+            <?php $count = 0; ?>
+            <?php $summary = 0; ?>
+            <?php foreach($collection as $_rating): ?>
+                <?php if($_rating->getSummary()): ?>
+                    <?php $summary = $summary + $_rating->getSummary();
+                    $count++; ?>
+                    <tr>
+                        <th><?php echo $this->__($this->escapeHtml($_rating->getRatingCode())) ?></th>
+                        <td>
+                            <div class="rating-box">
+                                <div class="rating" style="width:<?php echo ceil($_rating->getSummary()) ?>%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php if($showStructuredData): ?>
+        <meta itemprop="itemReviewed" content="<?php echo $this->__($this->getProduct()->getName()); ?>" />
+        <meta itemprop="worstRating" content="1">
+        <meta itemprop="ratingValue" content="<?php echo round(($summary / $count) / 20, 1); ?>" />
+        <meta itemprop="bestRating" content="5">
+        <meta itemprop="reviewCount" content="<?php echo $this->getReviewsCount(); ?>" />
+        </span>
+    <?php endif; ?>
+
+<?php endif; ?>

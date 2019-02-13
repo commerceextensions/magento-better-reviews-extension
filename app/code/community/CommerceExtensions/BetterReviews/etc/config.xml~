@@ -1,0 +1,204 @@
+<config>
+  <modules>
+    <CommerceExtensions_BetterReviews>
+      <version>1.1.0</version>
+    </CommerceExtensions_BetterReviews>
+  </modules>
+  <global>	  	    
+	<blocks>
+	  <betterreviews>
+	    <class>CommerceExtensions_BetterReviews_Block</class>
+	  </betterreviews>	
+	  <review>
+		<rewrite>
+		  <helper>CommerceExtensions_BetterReviews_Block_Review_Helper</helper>
+		  <product_view>CommerceExtensions_BetterReviews_Block_Review_Product_View</product_view>
+		  <product_view_list>CommerceExtensions_BetterReviews_Block_Review_Product_View_List</product_view_list>
+		</rewrite>	
+	  </review>	  
+	  <rating>
+	    <rewrite>
+		  <entity_detailed>CommerceExtensions_BetterReviews_Block_Rating_Entity_Detailed</entity_detailed>
+		</rewrite>
+	  </rating>  	  	        
+	</blocks>	
+	<models>
+	  <betterreviews>
+	    <class>CommerceExtensions_BetterReviews_Model</class>
+	  </betterreviews>
+	  <rating_resource>
+		<rewrite>
+		  <rating_collection>CommerceExtensions_BetterReviews_Model_Resource_Rating_Collection</rating_collection>
+		</rewrite>
+	  </rating_resource> 
+	  <review_resource>
+		<rewrite>
+		  <review>CommerceExtensions_BetterReviews_Model_Resource_Review</review>
+		</rewrite>
+	  </review_resource>  		  	   		    	        
+	</models>			
+	<helpers>
+	  <betterreviews>
+	    <class>CommerceExtensions_BetterReviews_Helper</class>
+	  </betterreviews>       
+	</helpers>	
+  </global>
+  <frontend>
+	<layout>
+	  <updates>
+		<betterreviews>
+		  <file>commerceextensions/betterreviews.xml</file>
+		</betterreviews>
+	  </updates>
+	</layout>
+	<events>
+	
+	  <!-- adds handle allowing for appropriate layout updates -->
+      <controller_action_layout_load_before>
+        <observers>
+          <updateHandles>
+            <class>betterreviews/product_view_observer</class>
+            <method>updateHandles</method>
+          </updateHandles>
+        </observers>
+      </controller_action_layout_load_before> 	
+	  
+	  <!-- redirect if requesting default reviews page -->  
+	  <controller_action_layout_render_before_review_product_list>
+        <observers>
+          <redirectToReviews>
+            <class>betterreviews/observer</class>
+            <method>redirectToReviews</method>
+          </redirectToReviews>
+        </observers>	  
+	  </controller_action_layout_render_before_review_product_list>  
+	  
+	  <!-- add review summary to the category product list -->
+	  <catalog_block_product_list_collection>
+        <observers>
+          <addAssociatedProductsToSummaryHelper>
+            <class>betterreviews/review_summary_observer</class>
+            <method>addAssociatedProductsToSummaryHelper</method>
+          </addAssociatedProductsToSummaryHelper>
+        </observers>	  
+	  </catalog_block_product_list_collection>
+	  
+	  <!-- add review summary to other product lists -->
+	  <catalog_product_collection_load_after>
+        <observers>
+          <addAssociatedProductsToSummaryHelper>
+            <class>betterreviews/review_summary_observer</class>
+            <method>addAssociatedProductsToSummaryHelper</method>
+          </addAssociatedProductsToSummaryHelper>
+        </observers>		  
+	  </catalog_product_collection_load_after>
+	  
+	  <!-- add associated products to the reviews collection -->
+	  <core_block_abstract_prepare_layout_before>
+        <observers>
+          <addAssociatedProductsReviews>
+		    <type>singleton</type>
+            <class>betterreviews/review_list_observer</class>
+            <method>addAssociatedProductsReviews</method>
+          </addAssociatedProductsReviews>
+		  <setShortSummaryTemplate>
+		    <type>singleton</type>
+            <class>betterreviews/review_summary_observer</class>
+            <method>setShortSummaryTemplate</method>		  
+		  </setShortSummaryTemplate>	  
+        </observers>	  
+	  </core_block_abstract_prepare_layout_before>	
+	  	  
+	  <core_block_abstract_to_html_before>
+	    <observers>
+		  <!-- add identifiable attribute to reviews list -->
+          <addAttributeToReview>
+		    <type>singleton</type>
+            <class>betterreviews/review_list_observer</class>
+            <method>addAttributeToReview</method>
+          </addAttributeToReview>
+		  <!-- add rich snippets to reviews list -->
+          <addRichSnippetsToList>
+		    <type>singleton</type>
+            <class>betterreviews/review_list_observer</class>
+            <method>addRichSnippets</method>
+          </addRichSnippetsToList>
+		  <!-- add rich snippets to star rating summary -->
+          <addRichSnippetsToSummary>
+		    <type>singleton</type>
+            <class>betterreviews/review_summary_observer</class>
+            <method>addRichSnippets</method>
+          </addRichSnippetsToSummary>
+		  <!-- add rich snippets to detailed star ratings -->			  		  			
+          <addRichSnippetsToDetailed>
+		    <type>singleton</type>
+            <class>betterreviews/rating_detailed_observer</class>
+            <method>addRichSnippets</method>
+          </addRichSnippetsToDetailed>			  
+		</observers>
+	  </core_block_abstract_to_html_before>  
+	  
+	  <!-- change text content of reviews block H2 -->
+	  <core_block_abstract_to_html_after>
+        <observers>
+          <updateBlockTitle>
+            <class>betterreviews/review_list_observer</class>
+            <method>updateBlockTitle</method>
+          </updateBlockTitle>
+          <updateToolbarText>
+            <class>betterreviews/review_list_observer</class>
+            <method>updateToolbarText</method>
+          </updateToolbarText>		  
+          <fixUrl>
+            <class>betterreviews/review_summary_observer</class>
+            <method>fixUrl</method>
+          </fixUrl>		  
+        </observers>	  
+	  </core_block_abstract_to_html_after>
+	  
+	  <!-- update reviews summary on product page -->
+	  <catalog_product_load_after>
+        <observers>
+          <addAssociatedProductsToSummary>
+            <class>betterreviews/review_summary_observer</class>
+            <method>addAssociatedProductsToSummary</method>
+          </addAssociatedProductsToSummary>
+        </observers>	  
+	  </catalog_product_load_after>	  	  
+	</events>	
+  </frontend>  
+  <adminhtml>   
+	<acl>
+	  <resources>
+		<admin>
+		  <children>
+			<system>
+			  <children>
+				<config>
+				  <children>		  
+					<productpagereviews translate="title" module="betterreviews">
+					  <title>Product Page Reviews</title>
+					  <sort_order>1105</sort_order>
+					</productpagereviews>
+					<associatedproductreviews translate="title" module="betterreviews">
+					  <title>Associated Product Reviews</title>
+					  <sort_order>1110</sort_order>
+					</associatedproductreviews>
+				  </children>
+				</config>
+			  </children>
+			</system>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>	
+  </adminhtml>  
+  <default>
+	<productpagereviews>
+	  <general>                
+		<block_title_pattern_simple>Reviews for {{product_name}}</block_title_pattern_simple> 
+		<block_title_pattern_grouped>Reviews for {{product_name}}</block_title_pattern_grouped>        
+	  </general>      
+	</productpagereviews>
+  </default>     
+</config> 

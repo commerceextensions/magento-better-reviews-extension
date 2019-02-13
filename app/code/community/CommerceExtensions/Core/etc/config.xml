@@ -1,0 +1,52 @@
+<config>
+  <modules>
+    <CommerceExtensions_Core>
+      <version>1.2.1</version>
+    </CommerceExtensions_Core>
+  </modules>
+  <frontend>
+	<layout>
+	  <updates>
+		<cecore>
+		  <file>commerceextensions/core.xml</file>
+		</cecore>
+	  </updates>
+	</layout>		
+  </frontend>  
+  <global>	 
+	<helpers>
+	  <cecore>
+		<class>CommerceExtensions_Core_Helper</class>
+	  </cecore>
+	</helpers>		
+  </global>
+  <adminhtml>
+	<layout>
+	  <updates>
+		<cecore>
+		  <file>commerceextensions/core.xml</file>
+		</cecore>
+	  </updates>
+	</layout>   
+	<acl>
+	  <resources>
+		<admin>
+		  <children>
+			<system>
+			  <children>
+				<config>
+				  <children>		
+				    <cecore translate="title" module="cecore">
+					  <title>CommerceExtensions Core</title>
+					  <sort_order>1100</sort_order>
+					</cecore>		  
+				  </children>
+				</config>
+			  </children>
+			</system>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+  </adminhtml>   
+</config>  

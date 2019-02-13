@@ -1,0 +1,591 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <betterreviews translate="label" module="betterreviews">
+            <label><![CDATA[BetterReviews]]></label>
+            <tab>commerceextensions</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" module="betterreviews">
+                    <label><![CDATA[General Options]]></label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Enabled]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Master on/off switch for module]]></comment>
+                        </enabled>
+                    </fields>
+                </general>
+                <simple_product translate="label" module="betterreviews">
+                    <label><![CDATA[Simple Products]]></label>
+                    <tab>commerceextensions</tab>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Enabled]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <reviews_on_product_page translate="label" module="betterreviews">
+                            <label><![CDATA[Display Reviews on Product Page]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[All requests for the default product page will be 301-redirected to the product page]]></comment>
+                        </reviews_on_product_page>
+                        <change_block_title translate="label" module="betterreviews">
+                            <label><![CDATA[Change Reviews Block Title]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>300</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Do you want to change the heading of the reviews block from "Customer Reviews" to something else?]]></comment>
+                        </change_block_title>
+                        <block_title_pattern translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews Block Title]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>400</sort_order>
+                            <validate>required-entry validate-no-html-tags</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can include the product name or sku in your block title pattern using either of these phrases: {{name}}, {{sku}}]]></comment>
+                            <depends><change_block_title>1</change_block_title></depends>
+                        </block_title_pattern>
+                        <list_order translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Order]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>500</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_order</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_order>
+                        <list_dir translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Direction]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>600</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_direction</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><list_order>length</list_order></depends>
+                        </list_dir>
+                        <structured_data_enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Add Structured Data to Review?]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>700</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Add structured data, also known as rich snippets, to review. This will cause Google to show rating stars in their search results pages]]></comment>
+                        </structured_data_enabled>
+                    </fields>
+                </simple_product>
+                <virtual_product translate="label" module="betterreviews">
+                    <label><![CDATA[Virtual Products]]></label>
+                    <tab>commerceextensions</tab>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Enabled]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <reviews_on_product_page translate="label" module="betterreviews">
+                            <label><![CDATA[Display Reviews on Product Page]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[All requests for the default product page will be 301-redirected to the product page]]></comment>
+                        </reviews_on_product_page>
+                        <change_block_title translate="label" module="betterreviews">
+                            <label><![CDATA[Change Reviews Block Title]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>300</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Do you want to change the heading of the reviews block from "Customer Reviews" to something else?]]></comment>
+                        </change_block_title>
+                        <block_title_pattern translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews Block Title]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>400</sort_order>
+                            <validate>required-entry validate-no-html-tags</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can include the product name or sku in your block title pattern using either of these phrases: {{name}}, {{sku}}]]></comment>
+                            <depends><change_block_title>1</change_block_title></depends>
+                        </block_title_pattern>
+                        <list_order translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Order]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>500</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_order</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_order>
+                        <list_dir translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Direction]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>600</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_direction</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><list_order>length</list_order></depends>
+                        </list_dir>
+                        <structured_data_enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Add Structured Data to Review?]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>700</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Add structured data, also known as rich snippets, to review. This will cause Google to show rating stars in their search results pages]]></comment>
+                        </structured_data_enabled>
+                    </fields>
+                </virtual_product>
+                <downloadable_product translate="label" module="betterreviews">
+                    <label><![CDATA[Downloadable Products]]></label>
+                    <tab>commerceextensions</tab>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>400</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Enabled]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <reviews_on_product_page translate="label" module="betterreviews">
+                            <label><![CDATA[Display Reviews on Product Page]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[All requests for the default product page will be 301-redirected to the product page]]></comment>
+                        </reviews_on_product_page>
+                        <change_block_title translate="label" module="betterreviews">
+                            <label><![CDATA[Change Reviews Block Title]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>300</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Do you want to change the heading of the reviews block from "Customer Reviews" to something else?]]></comment>
+                        </change_block_title>
+                        <block_title_pattern translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews Block Title]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>400</sort_order>
+                            <validate>required-entry validate-no-html-tags</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can include the product name or sku in your block title pattern using either of these phrases: {{name}}, {{sku}}]]></comment>
+                            <depends><change_block_title>1</change_block_title></depends>
+                        </block_title_pattern>
+                        <list_order translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Order]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>500</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_order</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_order>
+                        <list_dir translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Direction]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>600</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_direction</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><list_order>length</list_order></depends>
+                        </list_dir>
+                        <structured_data_enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Add Structured Data to Review?]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>700</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Add structured data, also known as rich snippets, to review. This will cause Google to show rating stars in their search results pages]]></comment>
+                        </structured_data_enabled>
+                    </fields>
+                </downloadable_product>
+                <grouped_product translate="label" module="betterreviews">
+                    <label><![CDATA[Grouped Products]]></label>
+                    <tab>commerceextensions</tab>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Enabled]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <include_associated_product_reviews translate="label" module="betterreviews">
+                            <label><![CDATA[Include Child Product Reviews]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Include reviews and rating stars of child products with the parent product's]]></comment>
+                        </include_associated_product_reviews>
+                        <show_product_name translate="label" module="betterreviews">
+                            <label><![CDATA[Show Product Names In Review List]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>300</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <validate>required-entry validate-select</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><include_associated_product_reviews>1</include_associated_product_reviews></depends>
+                        </show_product_name>
+                        <reviews_on_product_page translate="label" module="betterreviews">
+                            <label><![CDATA[Display Reviews on Product Page]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>400</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[All requests for the default product page will be 301-redirected to the product page]]></comment>
+                        </reviews_on_product_page>
+                        <change_block_title translate="label" module="betterreviews">
+                            <label><![CDATA[Change Reviews Block Title]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>500</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Do you want to change the heading of the reviews block from "Customer Reviews" to something else?]]></comment>
+                        </change_block_title>
+                        <block_title_pattern translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews Block Title]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>600</sort_order>
+                            <validate>required-entry validate-no-html-tags</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can include the product name or sku in your block title pattern using either of these phrases: {{name}}, {{sku}}]]></comment>
+                            <depends><change_block_title>1</change_block_title></depends>
+                        </block_title_pattern>
+                        <list_order translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Order]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>700</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_order</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_order>
+                        <list_dir translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Direction]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>800</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_direction</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><list_order>length</list_order></depends>
+                        </list_dir>
+                        <structured_data_enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Add Structured Data to Review?]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>900</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Add structured data, also known as rich snippets, to review. This will cause Google to show rating stars in their search results pages]]></comment>
+                        </structured_data_enabled>
+                    </fields>
+                </grouped_product>
+                <configurable_product translate="label" module="betterreviews">
+                    <label><![CDATA[Configurable Products]]></label>
+                    <tab>commerceextensions</tab>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>600</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Enabled]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <include_associated_product_reviews translate="label" module="betterreviews">
+                            <label><![CDATA[Include Child Product Reviews]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Include reviews and rating stars of child products with the parent product's]]></comment>
+                        </include_associated_product_reviews>
+                        <show_product_name translate="label" module="betterreviews">
+                            <label><![CDATA[Show Product Names In Review List]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>300</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <validate>required-entry validate-select</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><include_associated_product_reviews>1</include_associated_product_reviews></depends>
+                        </show_product_name>
+                        <reviews_on_product_page translate="label" module="betterreviews">
+                            <label><![CDATA[Display Reviews on Product Page]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>400</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[All requests for the default product page will be 301-redirected to the product page]]></comment>
+                        </reviews_on_product_page>
+                        <change_block_title translate="label" module="betterreviews">
+                            <label><![CDATA[Change Reviews Block Title]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>500</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Do you want to change the heading of the reviews block from "Customer Reviews" to something else?]]></comment>
+                        </change_block_title>
+                        <block_title_pattern translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews Block Title]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>600</sort_order>
+                            <validate>required-entry validate-no-html-tags</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can include the product name or sku in your block title pattern using either of these phrases: {{name}}, {{sku}}]]></comment>
+                            <depends><change_block_title>1</change_block_title></depends>
+                        </block_title_pattern>
+                        <list_order translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Order]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>700</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_order</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_order>
+                        <list_dir translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Direction]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>800</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_direction</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><list_order>length</list_order></depends>
+                        </list_dir>
+                        <structured_data_enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Add Structured Data to Review?]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>900</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Add structured data, also known as rich snippets, to review. This will cause Google to show rating stars in their search results pages]]></comment>
+                        </structured_data_enabled>
+                    </fields>
+                </configurable_product>
+                <bundle_product translate="label" module="betterreviews">
+                    <label><![CDATA[Bundle Products]]></label>
+                    <tab>commerceextensions</tab>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>700</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Enabled]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <include_associated_product_reviews translate="label" module="betterreviews">
+                            <label><![CDATA[Include Child Product Reviews]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Include reviews and rating stars of child products with the parent product's]]></comment>
+                        </include_associated_product_reviews>
+                        <show_product_name translate="label" module="betterreviews">
+                            <label><![CDATA[Show Product Names In Review List]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>300</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <validate>required-entry validate-select</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><include_associated_product_reviews>1</include_associated_product_reviews></depends>
+                        </show_product_name>
+                        <reviews_on_product_page translate="label" module="betterreviews">
+                            <label><![CDATA[Display Reviews on Product Page]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>400</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[All requests for the default product page will be 301-redirected to the product page]]></comment>
+                        </reviews_on_product_page>
+                        <change_block_title translate="label" module="betterreviews">
+                            <label><![CDATA[Change Reviews Block Title]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>500</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Do you want to change the heading of the reviews block from "Customer Reviews" to something else?]]></comment>
+                        </change_block_title>
+                        <block_title_pattern translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews Block Title]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>600</sort_order>
+                            <validate>required-entry validate-no-html-tags</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can include the product name or sku in your block title pattern using either of these phrases: {{name}}, {{sku}}]]></comment>
+                            <depends><change_block_title>1</change_block_title></depends>
+                        </block_title_pattern>
+                        <list_order translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Order]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>700</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_order</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_order>
+                        <list_dir translate="label" module="betterreviews">
+                            <label><![CDATA[Reviews List Sort Direction]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>800</sort_order>
+                            <validate>required-entry validate-select</validate>
+                            <source_model>betterreviews/adminhtml_system_config_source_form_direction</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><list_order>length</list_order></depends>
+                        </list_dir>
+                        <structured_data_enabled translate="label" module="betterreviews">
+                            <label><![CDATA[Add Structured Data to Review?]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>900</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Add structured data, also known as rich snippets, to review. This will cause Google to show rating stars in their search results pages]]></comment>
+                        </structured_data_enabled>
+                    </fields>
+                </bundle_product>
+            </groups>
+        </betterreviews>
+    </sections>
+</config>

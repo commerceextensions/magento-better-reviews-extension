@@ -1,0 +1,41 @@
+<config>
+  <tabs>
+	<commerceextensions translate="label" module="cecore">
+	  <label>Commerce Extensions</label>
+	  <sort_order>210</sort_order>
+	</commerceextensions>
+  </tabs>
+  <sections>
+	<cecore translate="label" module="cecore">
+	  <label>Core</label>
+	  <tab>commerceextensions</tab>
+	  <frontend_type>text</frontend_type>
+	  <sort_order>100</sort_order>
+	  <show_in_default>1</show_in_default>
+	  <show_in_website>1</show_in_website>
+	  <show_in_store>1</show_in_store>  
+		<groups>
+		  <jquery translate="label">
+			<label>General Options</label>
+			<frontend_type>text</frontend_type>
+			<sort_order>1</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store> 
+			  <fields>
+				<jquery_enable>
+				  <label>Enable jQuery</label>
+				  <frontend_type>select</frontend_type>
+				  <comment>Select "No" if you already have jQuery installed on your website.</comment>				  
+				  <sort_order>100</sort_order>
+				  <source_model>adminhtml/system_config_source_yesno</source_model>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>                    
+				</jquery_enable>																							
+			  </fields> 			               
+		  </jquery>
+		</groups> 	  
+	</cecore>
+  </sections>
+</config>

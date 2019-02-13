@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <CommerceExtensions_BetterReviews>
+            <active>true</active>
+            <codePool>community</codePool>
+        </CommerceExtensions_BetterReviews>
+    </modules>
+</config>

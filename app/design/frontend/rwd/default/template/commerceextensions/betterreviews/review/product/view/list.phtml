@@ -1,0 +1,110 @@
+<?php /** @var Mage_Review_Block_Product_View_List $this */ ?>
+<?php $_items = $this->getReviewsCollection()->getItems();?>
+<div class="box-collateral box-reviews" id="customer-reviews">
+    <?php if (count($_items)):?>
+        <div class="review-heading">
+            <?php $showStructuredData = $this->getShowStructuredData(); ?>
+            <?php $showProductName = $this->getShowProductName(); ?>
+            <h2>
+                <?php if($blockTitle = $this->getBlockTitle()): ?>
+                    <?php echo $this->__($blockTitle) ?>
+                <?php else: ?>
+                    <?php echo $this->__('Customer Reviews') ?>
+                <?php endif; ?>
+                <span><?php echo count($_items); ?> item(s)</span>
+            </h2>
+            <?php echo $this->getChildHtml('toolbar') ?>
+        </div>
+        <dl>
+            <?php foreach ($_items as $_review):?>
+            <span <?php if($showStructuredData): ?>itemprop="review" itemscope itemtype="http://schema.org/Review"<?php endif; ?>>
+                <dt>
+                    <a href="<?php echo Mage::getUrl('review/product/view', array('id' => $_review->getId())); ?>">
+                        <?php if($showStructuredData): ?>
+                            <span itemprop="name"><?php echo $this->htmlEscape($_review->getTitle()) ?></span>
+                        <?php else: ?>
+                            <?php echo $this->htmlEscape($_review->getTitle()) ?>
+                        <?php endif; ?>
+                    </a>
+                    <?php if($showProductName): ?>
+                        <?php if($showStructuredData): ?>
+                            <p><small itemprop="itemReviewed"><?php echo $this->__($_review->getProductName()); ?></small></p>
+                        <?php else: ?>
+                            <p><small><?php echo $this->__($_review->getProductName()); ?></small></p>
+                        <?php endif; ?>
+                    <?php elseif($showStructuredData): ?>
+                        <meta itemprop="itemReviewed" content="<?php echo $this->__($_review->getProductName()); ?>" />
+                    <?php endif; ?>
+                </dt>
+                <dd>
+                    <?php $_votes = $_review->getRatingVotes(); ?>
+
+                    <?php if($showStructuredData): ?>
+                        <span itemprop="reviewBody"><?php echo nl2br($this->escapeHtml($_review->getDetail())) ?></span>
+                    <?php else: ?>
+                        <?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
+                    <?php endif; ?>
+
+                    <?php if (count($_votes)): ?>
+                        <table class="ratings-table" <?php if($showStructuredData): ?>itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"<?php endif; ?>>
+                            <colgroup>
+                                <col class="review-label" />
+                                <col class="review-value" />
+                            </colgroup>
+                            <tbody>
+                            <?php $count = 0; ?>
+                            <?php $percent = 0; ?>
+                            <?php foreach ($_votes as $_vote): ?>
+                                <?php $percent = $percent + $_vote->getPercent(); ?>
+                                <?php $count++; ?>
+                                <tr>
+                                    <th><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
+                                    <td>
+                                        <div class="rating-box">
+                                            <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <?php if($showStructuredData): ?>
+                                <tr style="display: none;">
+                                    <th></th>
+                                    <td>
+                                        <meta itemprop="worstRating" content="1" />
+                                        <meta itemprop="ratingValue" content="<?php echo round(($percent / $count) / 20, 1); ?>" />
+                                        <meta itemprop="bestRating" content="5" />
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                            <?php unset($count); ?>
+                            <?php unset($percent); ?>
+                            </tbody>
+                        </table>
+                    <?php endif; ?>
+
+
+                    <span class="review-meta">
+
+                        <?php if($showStructuredData): ?>
+                            <?php echo $this->__('Review by '); ?><span itemprop="author"><?php echo $this->__($this->escapeHtml($_review->getNickname())); ?></span>
+                        <?php else: ?>
+                            <?php echo $this->__('Review by %s', $this->escapeHtml($_review->getNickname())) ?>
+                        <?php endif; ?> /
+                        <?php if($showStructuredData): ?>
+                            <?php echo $this->__('Posted on '); ?><span itemprop="datePublished" content="<?php echo date("Y-m-d", strtotime($_review->getCreatedAt())); ?>"><?php echo $this->formatDate($_review->getCreatedAt(), 'long'); ?></span>
+                        <?php else: ?>
+                            <?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?>
+                        <?php endif; ?>
+
+                </span>
+                </dd>
+            </span>
+            <?php endforeach; ?>
+        </dl>
+
+        <?php // echo $this->getChildHtml('toolbar') ?>
+    <?php elseif($this->getParentBlock()): ?>
+        <?php echo $this->getParentBlock()->getReviewsSummaryHtml($this->getProduct(), 'short', true)?>
+    <?php endif;?>
+    <?php echo $this->getChildHtml('review_form') ?>
+</div>

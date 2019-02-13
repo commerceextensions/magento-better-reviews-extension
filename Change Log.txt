@@ -1,0 +1,12 @@
+Version 1.1.0
+Reduced code base significantly
+Significantly reduced the number of times that collections are called for this module to work
+Added ability to implement block title patterns so that reviews block H2 doesn't have to simply read "Customer Reviews"
+Increased use of observers to make module less likely to interfere with other modules
+Implemented less intrusive method of adding product reviews to product page
+Added ability to sort reviews by length of text to allow the more useful reviews to appear on page first
+Added ability to activate Google Rich Snippets on Reviews and Ratings
+Removed necessity to edit catalog/product/list.phtml to get module to work
+
+Version 1.1.1
+Made extension compatible with patch 6788

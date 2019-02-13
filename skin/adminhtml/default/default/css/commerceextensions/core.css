@@ -1,0 +1,37 @@
+.ce_form input[type="submit"] {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ed6502 #a04300 #a04300 #ed6502;
+	padding: 1px 7px 2px 7px;
+	background: #ffac47 url(../../images/btn_bg.gif) repeat-x 0 100%;
+	color: #fff;
+	font: bold 12px arial, helvetica, sans-serif;
+	cursor: pointer;
+	text-align: center !important;
+	white-space: nowrap;
+}
+.ce_form input[type="submit"]:hover{
+	background: #f77c16 url(../../images/btn_over_bg.gif) repeat-x 0 0;
+}
+.ce_helper_note{
+	border: 1px solid #d6d6d6;
+	background: #fafafa;
+	padding: 10px 15px;
+	margin-bottom: 15px;		
+}
+.ce_helper_note ul { 
+	list-style: disc; 
+	margin: 1em 0 1em 20px;
+}
+.ce_block_notice {
+	display: block;
+	border: 1px solid #D6D6D6 !important;
+	background: none repeat scroll 0 0 #FAFAFA !important;
+	padding: 10px 15px !important;
+	margin-bottom: 15px !important;
+}
+.ce_block_notice h3 {
+	color: #eb5e00;
+	font-size: 1.25em;
+	line-height: 1.2em;	
+}

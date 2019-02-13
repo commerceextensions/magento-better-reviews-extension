@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout>
+  <default>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/commerceextensions/core.css</stylesheet></action>
+			<action method="addItem"><type>js</type><name>commerceextensions/core/color/jscolor.js</name></action>
+			<action method="addItem"><type>js</type><name>commerceextensions/core/jquery.js</name></action>
+			<action method="addItem"><type>js</type><name>commerceextensions/core/noconflict.js</name></action>
+		</reference>
+  </default>
+</layout>

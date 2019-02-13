@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout version="1.1.0">
+  <default>
+	<reference name="head">
+	  <action method="addJs" ifconfig="cecore/jquery/jquery_enable"><script>commerceextensions/core/jquery.js</script></action>
+	  <action method="addJs" ifconfig="cecore/jquery/jquery_enable"><script>commerceextensions/core/noconflict.js</script></action>
+	</reference>  
+  </default>
+</layout>  
